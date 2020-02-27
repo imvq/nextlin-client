@@ -7,6 +7,16 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat
         architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.
       </p>
+      <div class="text-center">
+        <b-button class="btn-lg" pill variant="primary">Start now</b-button>
+      </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.wrapper-cenetered {
+  text-align: center;
+}
+</style>
+

@@ -1,12 +1,17 @@
 <template>
   <header class="py-5 bg-image-full">
-    <img class="img-fluid d-block mx-auto" src="~@/assets/logo.png" alt="Nextlin">
+    <img class="img-fluid d-block mx-auto img-in-header" src="~@/assets/logo.png" alt="Nextlin">
   </header>
 </template>
 
 <style scoped>
-.main__header {
+.bg-image-full {
+  background-color: black;
   background-image: url("~@/assets/background-min.png");
+}
+
+.img-in-header {
+  margin-top: 20px;
 }
 </style>
 

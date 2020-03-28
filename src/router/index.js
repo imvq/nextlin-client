@@ -13,5 +13,10 @@ export default new VueRouter({
       name: 'Home',
       component: Home
     },
+    {
+      path: '/work',
+      name: 'Work',
+      component: () => import('../views/Work.vue')
+    },
   ]
 });

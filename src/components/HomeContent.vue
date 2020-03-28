@@ -7,7 +7,9 @@
         our service will help you determine how successful your choice of a language can be, depending on what languages you can speak at the moment and at what level.
       </p>
       <div class="text-center">
-        <b-button class="btn-lg" pill variant="primary">Start now</b-button>
+        <router-link to="/work">
+          <b-button class="btn-lg" pill variant="primary">Start now</b-button>
+        </router-link>
       </div>
     </div>
   </section>
@@ -18,4 +20,3 @@
   text-align: center;
 }
 </style>
-

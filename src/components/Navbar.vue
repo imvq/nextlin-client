@@ -1,12 +1,18 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a id="link-home" href="#">
+      <a
+        id="link-home"
+        href="#"
+      >
         <div class="home-image">
           <i class="material-icons">home</i>
         </div>
       </a>
-      <a class="navbar-brand" href="#">About</a>
+      <a
+        class="navbar-brand"
+        href="#"
+      >About</a>
     </div>
   </nav>
 </template>

@@ -8,7 +8,13 @@
       </p>
       <div class="text-center">
         <router-link to="/work">
-          <b-button class="btn-lg" pill variant="primary">Start now</b-button>
+          <b-button
+            class="btn-lg"
+            pill
+            variant="primary"
+          >
+            Start now
+          </b-button>
         </router-link>
       </div>
     </div>

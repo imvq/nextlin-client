@@ -22,6 +22,7 @@
 
 <script>
 import LangSelector from '@/components/LangSelector';
+
 export default {
   components: {
     LangSelector

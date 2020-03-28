@@ -1,21 +1,21 @@
 <template>
   <div>
-    <select v-model="testVal">
+    <select v-model="langVal">
       <option
-        v-for="item in test"
-        :key="item"
-        :value="item"
+        v-for="lang in langs"
+        :key="lang"
+        :value="lang"
       >
-        {{ item }}
+        {{ lang }}
       </option>
     </select>
-    <select v-model="testVal">
+    <select v-model="levelVal">
       <option
-        v-for="item in test"
-        :key="item"
-        :value="item"
+        v-for="level in levels"
+        :key="level"
+        :value="level"
       >
-        {{ item }}
+        {{ level }}
       </option>
     </select>
   </div>
@@ -25,7 +25,7 @@
 export default {
   data() {
     return{
-      test: ['English', 'German', 'Ukrainian'],
+      langs: ['English', 'German', 'Ukrainian'],
       levels: ['Novice', 'Middle', 'Strong', 'Master'],
       testVal: null
   };

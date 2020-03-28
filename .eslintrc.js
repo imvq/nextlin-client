@@ -8,10 +8,11 @@ module.exports = {
     'ecmaVersion': 2020
   },
   rules: {
-    // override/add rules settings here, such as:
+    // Vue:
+    'vue/no-unused-vars': 'error',
+    // Default:
     'semi': 2, // Error.
     'quotes': ['error', 'single'],
-    'vue/no-unused-vars': 'error',
     'no-undef': 'off',
     'no-unused-vars': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

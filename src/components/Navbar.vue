@@ -1,18 +1,21 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a
+      <router-link
         id="link-home"
+        to="/"
         href="#"
       >
         <div class="home-image">
           <i class="material-icons">home</i>
         </div>
-      </a>
-      <a
+      </router-link>
+      <router-link
+        to="/"
         class="navbar-brand"
-        href="#"
-      >About</a>
+      >
+        About
+      </router-link>
     </div>
   </nav>
 </template>

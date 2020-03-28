@@ -4,6 +4,9 @@ module.exports = {
     'eslint:recommended',
     'plugin:vue/recommended'
   ],
+  parserOptions: {
+    'ecmaVersion': 2020
+  },
   rules: {
     // override/add rules settings here, such as:
     'semi': 2, // Error.

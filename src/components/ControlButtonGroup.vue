@@ -1,10 +1,16 @@
 <template>
   <div>
-    <b-button @click="onAdding()">
-      +
+    <b-button
+      variant="primary"
+      @click="onAdding()"
+    >
+      ＋
     </b-button>
-    <b-button @click="onRemoving()">
-      -
+    <b-button
+      variant="primary"
+      @click="onRemoving()"
+    >
+      —
     </b-button>
   </div>
 </template>

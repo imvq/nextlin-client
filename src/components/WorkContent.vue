@@ -17,6 +17,13 @@
           :key="x.id"
         />
         <ControlButtonGroup />
+        <b-button
+          class="btn-lg"
+          pill
+          variant="primary"
+        >
+          Analyze
+        </b-button>
       </div>
     </div>
   </section>
@@ -25,6 +32,10 @@
 <style scoped>
 .wrapper-cenetered {
   text-align: center;
+}
+
+.btn-lg {
+  margin-top: 10px;
 }
 </style>
 

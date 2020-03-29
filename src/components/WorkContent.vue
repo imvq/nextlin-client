@@ -8,7 +8,14 @@
         exact level, choose 'Middle'.
       </p>
       <div class="text-center">
-        <LangSelector />
+        <LangSelector
+          id="native"
+          :native="true"
+        />
+        <LangSelector
+          v-for="x in currentChoices"
+          :key="x.id"
+        />
         <ControlButtonGroup />
       </div>
     </div>
@@ -22,6 +29,7 @@
 </style>
 
 <script>
+import { bus } from '../main';
 import LangSelector from '@/components/LangSelector';
 import ControlButtonGroup from '@/components/ControlButtonGroup';
 
@@ -29,6 +37,36 @@ export default {
   components: {
     LangSelector,
     ControlButtonGroup
+  },
+  data() {
+    return {
+      allChoices: [
+        { lang: 'English' },
+        { lang: 'German' }
+      ],
+      currentChoices: []
+    };
+  },
+  created() {
+    this.currentChoices.push({
+      id: 0,
+      level: 'Novice',
+      ...this.allChoices[0]
+    });
+
+    bus.$on('addingPressed', () => {
+      this.currentChoices.push({
+        id: this.currentChoices.length > 0
+              ? this.currentChoices.length
+              : 0,
+        level: 'Novice',
+        ...this.allChoices[0]
+      });
+    });
+
+    bus.$on('removingPressed', () => {
+      this.currentChoices.pop();
+    });
   }
 };
 </script>

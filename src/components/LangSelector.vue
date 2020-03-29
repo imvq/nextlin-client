@@ -1,8 +1,6 @@
 <template>
   <div>
-    <select
-      v-model="langVal"
-    >
+    <select>
       <option
         v-for="lang in langs"
         :key="lang"
@@ -11,7 +9,7 @@
         {{ lang }}
       </option>
     </select>
-    <select v-model="levelVal">
+    <select v-if="!native">
       <option
         v-for="level in levels"
         :key="level"
@@ -19,6 +17,12 @@
       >
         {{ level }}
       </option>
+    </select>
+    <select
+      v-else
+      disabled
+    >
+      <option>Native</option>
     </select>
   </div>
 </template>
@@ -33,23 +37,19 @@ select {
 </style>
 
 <script>
-import { bus } from '../main';
-
 export default {
+  props: {
+    native: {
+      type: Boolean,
+      required: false
+    }
+  },
   data() {
-    return{
+    return {
       langs: ['English', 'German', 'Ukrainian'],
       levels: ['Novice', 'Middle', 'Strong', 'Master'],
       testVal: null
     };
-  },
-  created() {
-    bus.$on('addingPressed', () => {
-      alert('Adding pressed');
-    });
-    bus.$on('removingPressed', () => {
-      alert('Removing pressed');
-    });
   }
 };
 </script>

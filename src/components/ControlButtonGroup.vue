@@ -1,7 +1,11 @@
 <template>
   <div>
-    <b-button>+</b-button>
-    <b-button>-</b-button>
+    <b-button @click="onAdding()">
+      +
+    </b-button>
+    <b-button @click="onRemoving()">
+      -
+    </b-button>
   </div>
 </template>
 
@@ -12,3 +16,18 @@ button {
   margin: 10px;
 }
 </style>
+
+<script>
+import { bus } from '../main';
+
+export default {
+  methods: {
+    onAdding() {
+      bus.$emit('addingPressed');
+    },
+    onRemoving() {
+      bus.$emit('removingPressed');
+    }
+  }
+};
+</script>

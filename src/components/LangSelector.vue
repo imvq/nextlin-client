@@ -1,6 +1,8 @@
 <template>
   <div>
-    <select v-model="langVal">
+    <select
+      v-model="langVal"
+    >
       <option
         v-for="lang in langs"
         :key="lang"
@@ -31,13 +33,23 @@ select {
 </style>
 
 <script>
+import { bus } from '../main';
+
 export default {
   data() {
     return{
       langs: ['English', 'German', 'Ukrainian'],
       levels: ['Novice', 'Middle', 'Strong', 'Master'],
       testVal: null
-  };
-}
+    };
+  },
+  created() {
+    bus.$on('addingPressed', () => {
+      alert('Adding pressed');
+    });
+    bus.$on('removingPressed', () => {
+      alert('Removing pressed');
+    });
+  }
 };
 </script>

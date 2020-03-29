@@ -9,6 +9,7 @@
       </p>
       <div class="text-center">
         <LangSelector />
+        <ControlButtonGroup />
       </div>
     </div>
   </section>
@@ -22,10 +23,12 @@
 
 <script>
 import LangSelector from '@/components/LangSelector';
+import ControlButtonGroup from '@/components/ControlButtonGroup';
 
 export default {
   components: {
-    LangSelector
+    LangSelector,
+    ControlButtonGroup
   }
 };
 </script>

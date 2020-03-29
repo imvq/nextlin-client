@@ -21,6 +21,15 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+select {
+  width: 100px;
+  height: 40px;
+  margin: 10px;
+  text-align-last:center;
+}
+</style>
+
 <script>
 export default {
   data() {

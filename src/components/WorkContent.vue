@@ -21,6 +21,7 @@
           class="btn-lg"
           pill
           variant="primary"
+          @click="analyze"
         >
           Analyze
         </b-button>
@@ -43,6 +44,9 @@
 import { bus } from '../main';
 import LangSelector from '@/components/LangSelector';
 import ControlButtonGroup from '@/components/ControlButtonGroup';
+
+const host = process.env.VUE_APP_SERVICE_HOST || 'http://127.0.0.1:5000';
+const apiPath = `${host}/api/v1.0`;
 
 export default {
   components: {
@@ -78,6 +82,22 @@ export default {
     bus.$on('removingPressed', () => {
       this.currentChoices.pop();
     });
+  },
+  methods: {
+    analyze() {
+      alert(`${apiPath}/langs/analyse`);
+      this.axios.post(`${apiPath}/langs/analyse`, {
+        'native': 'Vietnamese',
+        'target_lang': 'Dutch',
+        'known_langs': [{'German': 'Middle'}, {'Mandarin': 'Master'}]
+      })
+      .then((response) => {
+        alert(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    }
   }
 };
 </script>

@@ -14,8 +14,8 @@
           :langs="allChoices"
         />
         <LangSelector
-          v-for="choice in currentChoices"
-          :key="choice"
+          v-for="(choice, index) in currentChoices"
+          :key="index"
           :langs="allChoices"
         />
         <ControlButtonGroup
@@ -59,13 +59,15 @@ export default {
   data() {
     return {
       allChoices: [],
-      currentChoices: []
+      currentChoices: [],
+      currentChoicesUniqueKey: 0
     };
   },
   created() {
     this.getLangs();
 
     bus.$on('addingPressed', () => {
+      ++this.currentChoicesUniqueKey;
       this.currentChoices.push(this.allChoices[0]);
     });
 

@@ -19,6 +19,14 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    CHANGE_LANG_LEVEL_PAIR: (state, { index, lang, level }) => {
+      if (lang) {
+        state.selectedLangLevelPairs[index].lang = lang;
+      }
+      if (level) {
+        state.selectedLangLevelPairs[index].level = level;
+      }
+    },
     ADD_LANG_LEVEL_PAIR: (state, pair) => {
       state.selectedLangLevelPairs.push(pair);
     },

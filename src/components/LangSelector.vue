@@ -41,7 +41,7 @@ select {
 </style>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   props: {
@@ -65,14 +65,22 @@ export default {
   },
 
   methods: {
+    ...mapMutations([
+      'CHANGE_LANG_LEVEL_PAIR'
+    ]),
+
     onLangChanged(event) {
-      this.selectedLangLevelPairs[this.elemId].lang 
-        = event.target.value;
+      this.CHANGE_LANG_LEVEL_PAIR({
+        index: this.elemId,
+        lang: event.target.value
+      });
     },
 
     onLevelChanged(value) {
-      this.selectedLangLevelPairs[this.elemId].level 
-        = event.target.value;
+      this.CHANGE_LANG_LEVEL_PAIR({
+        index: this.elemId,
+        level: event.target.value
+      });
     }
   }
 };

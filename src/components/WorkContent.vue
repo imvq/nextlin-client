@@ -58,6 +58,9 @@ export default {
     ...mapState([
       'availableLangs',
       'selectedLangLevelPairs',
+    ]),
+    ...mapGetters([
+      'preparedLangsInfos'
     ])
   },
 
@@ -72,6 +75,17 @@ export default {
         response['data']['results'].forEach(langName => {
           this.availableLangs.push(langName);
         });
+      });
+    },
+
+    analyse() {
+      this.axios.post(`${apiPath}/langs/analyse`, {
+        'native': 'Ukrainian',
+        'target_lang': 'Dutch',
+        'known_langs': this.preparedLangsInfos
+      })
+      .then(response => {
+        alert(response['data']['success_index']);
       });
     }
   }

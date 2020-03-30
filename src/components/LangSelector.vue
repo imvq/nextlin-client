@@ -61,7 +61,7 @@ export default {
       'levels',
       'availableLangs',
       'selectedLangLevelPairs'
-    ])
+    ])    
   },
 
   methods: {

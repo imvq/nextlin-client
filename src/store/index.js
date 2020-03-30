@@ -15,7 +15,15 @@ export default new Vuex.Store({
 
   getters: {
     defaultLevel: store => store.levels[0] || '',
-    defaultLang: store => store.availableLangs[0] || ''
+    defaultLang: store => store.availableLangs[0] || '',
+    preparedLangsInfos: store => {
+      const preparedData = [];
+      store.selectedLangLevelPairs.forEach((_, value) => {
+        preparedData.push({
+          [value.lang]: value.level
+        });
+      });
+    }
   },
 
   mutations: {

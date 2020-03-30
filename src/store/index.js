@@ -3,8 +3,14 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+const levels = ['Novice', 'Middle', 'Strong', 'Master'];
+
 export default new Vuex.Store({
-  state: {},
+  state: {
+    levels,
+    availableLangs: [],
+    selectedLangLevelPairs: []
+  },
   mutations: {},
   actions: {},
   modules: {}

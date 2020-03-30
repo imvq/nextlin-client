@@ -10,12 +10,11 @@
       <div class="text-center">
         <LangSelector
           :native="true"
-          :langs="allChoices"
         />
         <LangSelector
-          v-for="(choice, index) in currentChoices"
+          v-for="(choice, index) in $store.state.currentChoices"
           :key="index"
-          :langs="allChoices"
+          :elem-id="index"
         />
         <ControlButtonGroup
           :langs-available.sync="allChoices.length > 0"
@@ -43,7 +42,6 @@
 </style>
 
 <script>
-import { bus } from '../main';
 import LangSelector from '@/components/LangSelector';
 import ControlButtonGroup from '@/components/ControlButtonGroup';
 
@@ -55,49 +53,21 @@ export default {
     LangSelector,
     ControlButtonGroup
   },
-  data() {
-    return {
-      allChoices: [],
-      currentChoices: [],
-      currentChoicesUniqueKey: 0
-    };
-  },
-  created() {
-    this.getLangs();
 
-    bus.$on('addingPressed', () => {
-      ++this.currentChoicesUniqueKey;
-      this.currentChoices.push(this.allChoices[0]);
-    });
+  created: () => this.getLangs(),
 
-    bus.$on('removingPressed', () => {
-      this.currentChoices.pop();
-    });
-  },
   methods: {
     getLangs() {
       this.axios.get(`${apiPath}/langs/available`)
-      .then((response) => {
-        response['data']['results'].forEach((lang) => {
-          this.allChoices.push(lang);
+      .then(response => {
+        response['data']['results'].forEach(langName => {
+          this.$store.state.availableLangs.push(langName);
         });
-      })
-      .catch((error) => {
-        alert(error);
       });
     },
+
     analyze() {
-      this.axios.post(`${apiPath}/langs/analyse`, {
-        'native': 'Vietnamese',
-        'target_lang': 'Dutch',
-        'known_langs': [{'German': 'Middle'}, {'Mandarin': 'Master'}]
-      })
-      .then((response) => {
-        alert(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        alert(error);
-      });
+      // TODO: Analysis stuff.
     }
   }
 };

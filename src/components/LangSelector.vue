@@ -2,9 +2,8 @@
   <div>
     <select>
       <option
-        v-for="lang in langs"
+        v-for="lang in $store.state.availableLangs"
         :key="lang"
-        :value="lang"
       >
         {{ lang }}
       </option>
@@ -14,6 +13,7 @@
         v-for="level in levels"
         :key="level"
         :value="level"
+        :disabled="true"
       >
         {{ level }}
       </option>
@@ -39,19 +39,18 @@ select {
 <script>
 export default {
   props: {
-    langs: {
-      type: Array,
-      required: true
+    elemId: {
+      type: Number,
+      required: false,
+      default: 0
     },
     native: {
       type: Boolean,
       required: false
     }
   },
-  data() {
-    return {
-      levels: ['Novice', 'Middle', 'Strong', 'Master']
-    };
+  created() {
+    console.log(this.elemId);
   }
 };
 </script>

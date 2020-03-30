@@ -12,13 +12,12 @@
           :native="true"
         />
         <LangSelector
-          v-for="(choice, index) in $store.state.currentChoices"
+          v-for="(choice, index) in selectedLangLevelPairs"
           :key="index"
+          :value="choice.lang"
           :elem-id="index"
         />
-        <ControlButtonGroup
-          :langs-available.sync="allChoices.length > 0"
-        />
+        <ControlButtonGroup />
         <b-button
           class="btn-lg"
           pill
@@ -44,6 +43,7 @@
 <script>
 import LangSelector from '@/components/LangSelector';
 import ControlButtonGroup from '@/components/ControlButtonGroup';
+import { mapState } from 'vuex';
 
 const host = process.env.VUE_APP_SERVICE_HOST || 'http://127.0.0.1:5000';
 const apiPath = `${host}/api/v1.0`;
@@ -54,20 +54,25 @@ export default {
     ControlButtonGroup
   },
 
-  created: () => this.getLangs(),
+  computed: {
+    ...mapState([
+      'availableLangs',
+      'selectedLangLevelPairs',
+    ])
+  },
+
+  created() {
+    this.setLangs();
+  },
 
   methods: {
-    getLangs() {
+    setLangs() {
       this.axios.get(`${apiPath}/langs/available`)
       .then(response => {
         response['data']['results'].forEach(langName => {
-          this.$store.state.availableLangs.push(langName);
+          this.availableLangs.push(langName);
         });
       });
-    },
-
-    analyze() {
-      // TODO: Analysis stuff.
     }
   }
 };

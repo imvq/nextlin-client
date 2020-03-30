@@ -2,7 +2,7 @@
   <div>
     <b-button
       variant="primary"
-      :disabled="!langsAvailable"
+      :disabled.sync="availableLangs.length === 0"
       @click="onAdding()"
     >
       ＋
@@ -25,21 +25,42 @@ button {
 </style>
 
 <script>
-import { bus } from '../main';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
-  props: {
-    langsAvailable: {
-      type: Boolean,
-      required: true
-    }
+  computed: {
+    ...mapState([
+      'levels',
+      'availableLangs',
+      'currentChoices',
+      'selectedLangLevelId'
+    ]),
+    ...mapGetters([
+      'defaultLevel',
+      'defaultLang'
+    ])
   },
+
   methods: {
+    ...mapMutations([
+      'ADD_LANG_LEVEL_PAIR',
+      'REM_LANG_LEVEL_PAIR',
+      'INC_CURRENT_PAIR_ID',
+      'DEC_CURRENT_PAIR_ID'
+    ]),
+
     onAdding() {
-      bus.$emit('addingPressed');
+      this.ADD_LANG_LEVEL_PAIR({
+        id: this.selectedLangLevelId,
+        lang: this.defaultLang,
+        level: this.defaultLevel
+      });
+      this.INC_CURRENT_PAIR_ID();
     },
+
     onRemoving() {
-      bus.$emit('removingPressed');
+      this.REM_LANG_LEVEL_PAIR();
+      this.DEC_CURRENT_PAIR_ID();
     }
   }
 };

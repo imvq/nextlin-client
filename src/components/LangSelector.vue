@@ -1,19 +1,23 @@
 <template>
   <div>
-    <select>
+    <select
+      @change="onLangChanged"
+    >
       <option
-        v-for="lang in $store.state.availableLangs"
+        v-for="lang in availableLangs"
         :key="lang"
       >
         {{ lang }}
       </option>
     </select>
-    <select v-if="!native">
+    <select
+      v-if="!native"
+      @change="onLevelChanged"
+    >
       <option
         v-for="level in levels"
         :key="level"
         :value="level"
-        :disabled="true"
       >
         {{ level }}
       </option>
@@ -37,6 +41,8 @@ select {
 </style>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   props: {
     elemId: {
@@ -49,8 +55,25 @@ export default {
       required: false
     }
   },
-  created() {
-    console.log(this.elemId);
+
+  computed: {
+    ...mapState([
+      'levels',
+      'availableLangs',
+      'selectedLangLevelPairs'
+    ])
+  },
+
+  methods: {
+    onLangChanged(event) {
+      this.selectedLangLevelPairs[this.elemId].lang 
+        = event.target.value;
+    },
+
+    onLevelChanged(value) {
+      this.selectedLangLevelPairs[this.elemId].level 
+        = event.target.value;
+    }
   }
 };
 </script>

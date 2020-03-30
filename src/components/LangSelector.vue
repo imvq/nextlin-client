@@ -76,7 +76,7 @@ export default {
       });
     },
 
-    onLevelChanged(value) {
+    onLevelChanged(event) {
       this.CHANGE_LANG_LEVEL_PAIR({
         index: this.elemId,
         level: event.target.value

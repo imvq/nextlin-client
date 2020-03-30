@@ -50,8 +50,7 @@ export default {
   },
   data() {
     return {
-      levels: ['Novice', 'Middle', 'Strong', 'Master'],
-      testVal: null
+      levels: ['Novice', 'Middle', 'Strong', 'Master']
     };
   }
 };

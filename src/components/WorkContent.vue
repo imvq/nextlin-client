@@ -9,7 +9,6 @@
       </p>
       <div class="text-center">
         <LangSelector
-          id="native"
           :native="true"
           :langs="allChoices"
         />

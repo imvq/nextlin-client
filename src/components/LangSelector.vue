@@ -39,6 +39,10 @@ select {
 <script>
 export default {
   props: {
+    langs: {
+      type: Array,
+      required: true
+    },
     native: {
       type: Boolean,
       required: false
@@ -46,7 +50,6 @@ export default {
   },
   data() {
     return {
-      langs: ['English', 'German', 'Ukrainian'],
       levels: ['Novice', 'Middle', 'Strong', 'Master'],
       testVal: null
     };

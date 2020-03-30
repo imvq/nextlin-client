@@ -11,17 +11,20 @@
         <LangSelector
           id="native"
           :native="true"
+          :langs="allChoices"
         />
         <LangSelector
-          v-for="x in currentChoices"
-          :key="x.id"
+          v-for="choice in currentChoices"
+          :key="choice"
+          :langs="allChoices"
         />
-        <ControlButtonGroup />
+        <ControlButtonGroup
+          :langs-available.sync="allChoices.length > 0"
+        />
         <b-button
           class="btn-lg"
           pill
           variant="primary"
-          @click="analyze"
         >
           Analyze
         </b-button>
@@ -55,28 +58,15 @@ export default {
   },
   data() {
     return {
-      allChoices: [
-        { lang: 'English' },
-        { lang: 'German' }
-      ],
+      allChoices: [],
       currentChoices: []
     };
   },
   created() {
-    this.currentChoices.push({
-      id: 0,
-      level: 'Novice',
-      ...this.allChoices[0]
-    });
+    this.getLangs();
 
     bus.$on('addingPressed', () => {
-      this.currentChoices.push({
-        id: this.currentChoices.length > 0
-              ? this.currentChoices.length
-              : 0,
-        level: 'Novice',
-        ...this.allChoices[0]
-      });
+      this.currentChoices.push(this.allChoices[0]);
     });
 
     bus.$on('removingPressed', () => {
@@ -84,8 +74,18 @@ export default {
     });
   },
   methods: {
+    getLangs() {
+      this.axios.get(`${apiPath}/langs/available`)
+      .then((response) => {
+        response['data']['results'].forEach((lang) => {
+          this.allChoices.push(lang);
+        });
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    },
     analyze() {
-      alert(`${apiPath}/langs/analyse`);
       this.axios.post(`${apiPath}/langs/analyse`, {
         'native': 'Vietnamese',
         'target_lang': 'Dutch',

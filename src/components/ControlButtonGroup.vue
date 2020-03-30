@@ -2,6 +2,7 @@
   <div>
     <b-button
       variant="primary"
+      :disabled="!langsAvailable"
       @click="onAdding()"
     >
       ＋
@@ -27,6 +28,12 @@ button {
 import { bus } from '../main';
 
 export default {
+  props: {
+    langsAvailable: {
+      type: Boolean,
+      required: true
+    }
+  },
   methods: {
     onAdding() {
       bus.$emit('addingPressed');

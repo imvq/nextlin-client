@@ -10,6 +10,7 @@
     </div>
 
     <select
+      v-model="selectedOption"
       @change="onLangChanged"
     >
       <option
@@ -75,12 +76,26 @@ export default {
     }
   },
 
+  data() {
+    return {
+      optionToSelect: this.target ? 'Arabic' : 'English'
+    };
+  },
+
   computed: {
     ...mapState([
       'levels',
       'availableLangs',
       'selectedLangLevelPairs'
-    ])    
+    ]),
+    selectedOption: {
+      get() {
+        return this.optionToSelect;
+      },
+      set(value) {
+        this.optionToSelect = value;
+      }
+    },
   },
 
   methods: {

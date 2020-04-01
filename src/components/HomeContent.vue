@@ -26,3 +26,31 @@
   text-align: center;
 }
 </style>
+
+<script>
+import { mapState } from 'vuex';
+import { apiPath } from '@/constants';
+
+export default {
+  computed: {
+    ...mapState([
+      'availableLangs'
+    ])
+  },
+
+  created() {
+    this.setLangs();
+  },
+
+  methods: {
+    setLangs() {
+      this.axios.get(`${apiPath}/langs/available`)
+      .then(response => {
+        response['data']['results'].forEach(langName => {
+          this.availableLangs.push(langName);
+        });
+      });
+    }
+  }
+};
+</script>

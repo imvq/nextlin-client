@@ -48,9 +48,7 @@
 import LangSelector from '@/components/LangSelector';
 import ControlButtonGroup from '@/components/ControlButtonGroup';
 import { mapState, mapGetters } from 'vuex';
-
-const host = process.env.VUE_APP_SERVICE_HOST || 'http://127.0.0.1:5000';
-const apiPath = `${host}/api/v1.0`;
+import { apiPath } from '@/constants';
 
 export default {
   components: {
@@ -70,20 +68,7 @@ export default {
     ])
   },
 
-  created() {
-    this.setLangs();
-  },
-
   methods: {
-    setLangs() {
-      this.axios.get(`${apiPath}/langs/available`)
-      .then(response => {
-        response['data']['results'].forEach(langName => {
-          this.availableLangs.push(langName);
-        });
-      });
-    },
-
     analyse() {
       const toSend = {
         'native': this.selectedNativeLang,

@@ -33,7 +33,7 @@ export default new Vuex.Store({
       state.selectedTargetLang = newTargetLang;
     },
     CHANGE_NATIVE_LANG: (state, newNativeLang) => {
-      state.selectedTargetLang = newNativeLang;
+      state.selectedNativeLang = newNativeLang;
     },
     CHANGE_LANG_LEVEL_PAIR: (state, { index, lang, level }) => {
       if (lang) {

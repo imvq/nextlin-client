@@ -12,6 +12,7 @@
     </select>
     <select
       v-if="!native"
+      :disabled="target"
       @change="onLevelChanged"
     >
       <option
@@ -49,6 +50,10 @@ export default {
       type: Number,
       required: false,
       default: 0
+    },
+    target: {
+      type: Boolean,
+      required: false
     },
     native: {
       type: Boolean,

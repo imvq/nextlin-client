@@ -9,7 +9,10 @@
       </p>
       <div class="text-center">
         <LangSelector
-          :native="true"
+          target
+        />
+        <LangSelector
+          native
         />
         <LangSelector
           v-for="(choice, index) in selectedLangLevelPairs"
@@ -43,7 +46,7 @@
 <script>
 import LangSelector from '@/components/LangSelector';
 import ControlButtonGroup from '@/components/ControlButtonGroup';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 const host = process.env.VUE_APP_SERVICE_HOST || 'http://127.0.0.1:5000';
 const apiPath = `${host}/api/v1.0`;

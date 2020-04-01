@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div
+      v-if="target"
+      class="nowrap"
+    >
+      <span>
+        Target language:
+      </span>
+    </div>
+
     <select
       @change="onLangChanged"
     >
@@ -10,9 +19,9 @@
         {{ lang }}
       </option>
     </select>
+
     <select
-      v-if="!native"
-      :disabled="target"
+      v-if="!native && !target"
       @change="onLevelChanged"
     >
       <option
@@ -23,8 +32,9 @@
         {{ level }}
       </option>
     </select>
+
     <select
-      v-else
+      v-if="native"
       disabled
     >
       <option>Native</option>
@@ -38,6 +48,10 @@ select {
   height: 40px;
   margin: 10px;
   text-align-last:center;
+}
+
+.nowrap {
+  display: inline-block;
 }
 </style>
 

@@ -45,7 +45,9 @@ export default new Vuex.Store({
       ++state.selectedLangLevelId;
     },
     DEC_CURRENT_PAIR_ID: state => {
-      --state.selectedLangLevelId;
+      if (state.selectedLangLevelId) {
+        --state.selectedLangLevelId;
+      }
     }
   }
 });

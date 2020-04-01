@@ -20,11 +20,12 @@ export default new Vuex.Store({
     defaultLang: store => store.availableLangs[0] || '',
     preparedLangsInfos: store => {
       const preparedData = [];
-      store.selectedLangLevelPairs.forEach((_, value) => {
+      store.selectedLangLevelPairs.forEach(value => {
         preparedData.push({
           [value.lang]: value.level
         });
       });
+      return preparedData;
     }
   },
 

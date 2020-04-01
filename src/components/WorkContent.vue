@@ -25,6 +25,7 @@
           class="btn-lg"
           pill
           variant="primary"
+          @click="analyse"
         >
           Analyze
         </b-button>
@@ -61,6 +62,8 @@ export default {
     ...mapState([
       'availableLangs',
       'selectedLangLevelPairs',
+      'selectedTargetLang',
+      'selectedNativeLang',
     ]),
     ...mapGetters([
       'preparedLangsInfos'
@@ -82,13 +85,15 @@ export default {
     },
 
     analyse() {
-      this.axios.post(`${apiPath}/langs/analyse`, {
-        'native': 'Ukrainian',
-        'target_lang': 'Dutch',
+      const toSend = {
+        'native': this.selectedNativeLang,
+        'target_lang': this.selectedTargetLang,
         'known_langs': this.preparedLangsInfos
-      })
+      };
+      alert(JSON.stringify(toSend));
+      this.axios.post(`${apiPath}/langs/analyse`, toSend)
       .then(response => {
-        alert(response['data']['success_index']);
+        alert(JSON.stringify(response));
       });
     }
   }

@@ -11,7 +11,7 @@
 
     <select
       v-model="selectedOption"
-      @change="onLangChanged"
+      @change="changerFunction"
     >
       <option
         v-for="lang in availableLangs"
@@ -88,6 +88,7 @@ export default {
       'availableLangs',
       'selectedLangLevelPairs'
     ]),
+
     selectedOption: {
       get() {
         return this.optionToSelect;
@@ -96,12 +97,28 @@ export default {
         this.optionToSelect = value;
       }
     },
+
+    changerFunction() {
+      return this.target ? this.onTargetLangChanged
+        : this.native ? this.onNativeLangChanged
+        : this.onLangChanged;
+    }
   },
 
   methods: {
     ...mapMutations([
+      'CHANGE_TARGET_LANG',
+      'CHANGE_NATIVE_LANG',
       'CHANGE_LANG_LEVEL_PAIR'
     ]),
+
+    onTargetLangChanged(event) {
+      this.CHANGE_TARGET_LANG(event.target.value);
+    },
+
+    onNativeLangChanged(event) {
+      this.CHANGE_NATIVE_LANG(event.target.value);
+    },
 
     onLangChanged(event) {
       this.CHANGE_LANG_LEVEL_PAIR({

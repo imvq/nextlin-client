@@ -28,21 +28,29 @@
 </style>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import { apiPath } from '@/constants';
 
 export default {
   computed: {
     ...mapState([
-      'availableLangs'
+      'availableLangs',
+      'langsLoaded'
     ])
   },
 
   created() {
-    this.setLangs();
+    if (!this.langsLoaded) {
+      this.SET_LANGS_AS_LOADED();
+      this.setLangs();
+    }
   },
 
   methods: {
+    ...mapMutations([
+      'SET_LANGS_AS_LOADED'
+    ]),
+    
     setLangs() {
       this.axios.get(`${apiPath}/langs/available`)
       .then(response => {

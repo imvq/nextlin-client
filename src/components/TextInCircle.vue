@@ -31,13 +31,6 @@
 import { mapState } from 'vuex';
 
 export default {
-  props: {
-    successIndex: {
-      type: Number,
-      required: true
-    }
-  },
-
   computed: {
     ...mapState([
       'result'

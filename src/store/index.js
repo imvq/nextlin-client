@@ -17,7 +17,7 @@ export default new Vuex.Store({
     selectedLangLevelId: 0,
     langsLoaded: false,
     resultLoaded: false,
-    result: 0
+    result: '0%'
   },
 
   getters: {

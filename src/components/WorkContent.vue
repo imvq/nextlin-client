@@ -31,7 +31,6 @@
         </b-button>
         <TextInCircle
           v-if="resultLoaded"
-          :success-index="33"
         />
       </div>
     </div>
@@ -72,13 +71,14 @@ export default {
     ]),
     ...mapGetters([
       'preparedLangsInfos'
-    ]),
-    ...mapMutations([
-      'SET_RESULT_AS_LOADED'
     ])
   },
 
   methods: {
+    ...mapMutations([
+      'SET_RESULT_AS_LOADED'
+    ]),
+
     analyse() {
       this.axios.post(`${apiPath}/langs/analyse`, {
         'native': this.selectedNativeLang,

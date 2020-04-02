@@ -107,10 +107,6 @@ export default {
     }
   },
 
-  created() {
-    alert(this.selectedTargetLang == 'English');
-  },
-
   methods: {
     ...mapMutations([
       'CHANGE_TARGET_LANG',

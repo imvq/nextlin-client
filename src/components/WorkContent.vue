@@ -29,6 +29,7 @@
         >
           Analyze
         </b-button>
+        <TextInCircle :success-index="33" />
       </div>
     </div>
   </section>
@@ -47,13 +48,15 @@
 <script>
 import LangSelector from '@/components/LangSelector';
 import ControlButtonGroup from '@/components/ControlButtonGroup';
+import TextInCircle from '@/components/TextInCircle';
 import { mapState, mapGetters } from 'vuex';
 import { apiPath } from '@/constants';
 
 export default {
   components: {
     LangSelector,
-    ControlButtonGroup
+    ControlButtonGroup,
+    TextInCircle
   },
 
   computed: {

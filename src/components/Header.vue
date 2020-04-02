@@ -12,6 +12,7 @@
 .bg-image-full {
   background-color: black;
   background-image: url("~@/assets/background-min.png");
+  margin-top: 40px;
 }
 </style>
 

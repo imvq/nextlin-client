@@ -22,8 +22,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  transition: opacity 5s ease-out;
 }
 </style>
 

@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const levels = ['Novice', 'Middle', 'Strong', 'Master'];
+const levels = ['Novice', 'Middle', 'Strong', 'Master', 'Native'];
 const DEFAULT_TARGET_LANG_INDEX = 2;
 const DEFAULT_NATIVE_LANG_INDEX = 13;
 

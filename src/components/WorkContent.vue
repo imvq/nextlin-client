@@ -29,9 +29,11 @@
         >
           Analyze
         </b-button>
-        <TextInCircle
-          v-if="resultLoaded"
-        />
+        <transition name="fade">
+          <TextInCircle
+            v-if="resultLoaded"
+          />
+        </transition>
       </div>
     </div>
   </section>
@@ -44,6 +46,13 @@
 
 .btn-lg {
   margin-top: 10px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
 
@@ -81,9 +90,11 @@ export default {
 
     analyse() {
       this.axios.post(`${apiPath}/langs/analyse`, {
-        'native': this.selectedNativeLang,
         'target_lang': this.selectedTargetLang,
         'known_langs': this.preparedLangsInfos
+          .concat([
+            { [this.selectedNativeLang]: 'Native' }
+          ])
       })
       .then(response => {
         this.SET_RESULT_AS_LOADED(response['data']['success_index']);

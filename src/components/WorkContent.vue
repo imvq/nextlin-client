@@ -70,13 +70,11 @@ export default {
 
   methods: {
     analyse() {
-      const toSend = {
+      this.axios.post(`${apiPath}/langs/analyse`, {
         'native': this.selectedNativeLang,
         'target_lang': this.selectedTargetLang,
         'known_langs': this.preparedLangsInfos
-      };
-      alert(JSON.stringify(toSend));
-      this.axios.post(`${apiPath}/langs/analyse`, toSend)
+      })
       .then(response => {
         alert(JSON.stringify(response));
       });

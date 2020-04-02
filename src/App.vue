@@ -1,18 +1,20 @@
 <template>
   <div id="app">
+    <Navbar />
+    <Header />
     <transition
       name="fade"
       mode="out-in"
     >
       <router-view />
     </transition>
+    <Footer />
   </div>
 </template>
 
 <style lang="scss" scoped>
 #app {
-  overflow: hidden;
-  width: 100vw;
+  overflow-x: hidden;
 }
 
 .fade-enter, .fade-leave-to {
@@ -26,7 +28,16 @@
 </style>
 
 <script>
+import Navbar from '@/components/Navbar';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Navbar,
+    Header,
+    Footer
+  }
 };
 </script>

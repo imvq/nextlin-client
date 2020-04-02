@@ -74,7 +74,7 @@ export default {
       'preparedLangsInfos'
     ]),
     ...mapMutations([
-      'SET_RESULT_LOADED'
+      'SET_RESULT_AS_LOADED'
     ])
   },
 
@@ -86,7 +86,7 @@ export default {
         'known_langs': this.preparedLangsInfos
       })
       .then(response => {
-        this.SET_RESULT_LOADED(response['data']['success_index']);
+        this.SET_RESULT_AS_LOADED(response['data']['success_index']);
       })
       .catch(error => {
         alert('The service server does not response');

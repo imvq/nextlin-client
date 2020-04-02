@@ -39,13 +39,13 @@ export default new Vuex.Store({
       langs.forEach(langName => {
         state.availableLangs.push(langName);
       });
-      state.selectedNativeLang = state.availableLangs
+      state.selectedTargetLang = state.availableLangs
           .length > DEFAULT_TARGET_LANG_INDEX
         ? state.availableLangs[DEFAULT_TARGET_LANG_INDEX]
         : state.availableLangs.length > 0
         ? state.availableLangs[0]
         : '';
-        state.selectedNativeLang = state.availableLangs
+      state.selectedNativeLang = state.availableLangs
           .length > DEFAULT_NATIVE_LANG_INDEX
         ? state.availableLangs[DEFAULT_NATIVE_LANG_INDEX]
         : state.availableLangs.length > 0

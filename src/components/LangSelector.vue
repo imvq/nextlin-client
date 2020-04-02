@@ -76,18 +76,20 @@ export default {
     }
   },
 
-  data() {
-    return {
-      optionToSelect: this.target ? 'Arabic' : 'English'
-    };
-  },
-
   computed: {
     ...mapState([
       'levels',
       'availableLangs',
-      'selectedLangLevelPairs'
+      'selectedLangLevelPairs',
+      'selectedTargetLang',
+      'selectedNativeLang'
     ]),
+
+    optionToSelect() {
+      return this.target
+        ? this.selectedTargetLang
+        : this.selectedNativeLang;
+    },
 
     selectedOption: {
       get() {
@@ -103,6 +105,10 @@ export default {
         : this.native ? this.onNativeLangChanged
         : this.onLangChanged;
     }
+  },
+
+  created() {
+    alert(this.selectedTargetLang == 'English');
   },
 
   methods: {

@@ -59,7 +59,8 @@ export default {
         response['data']['results'].forEach(langName => {
           availableLangs.push(langName);
         });
-        this.SET_LANGS_AS_LOADED(availableLangs);
+        this.SET_AVAILABLE_LANGS(availableLangs);
+        this.SET_LANGS_AS_LOADED();
       });
     }
   }

@@ -13,7 +13,9 @@ export default new Vuex.Store({
     selectedNativeLang: '',
     selectedLangLevelPairs: [],
     selectedLangLevelId: 0,
-    langsLoaded: false
+    langsLoaded: false,
+    resultLoaded: false,
+    result: 0
   },
 
   getters: {
@@ -33,6 +35,10 @@ export default new Vuex.Store({
   mutations: {
     SET_LANGS_AS_LOADED: state => {
       state.langsLoaded = true;
+    },
+    SET_RESULT_AS_LOADED: (state, result) => {
+      state.result = result;
+      state.resultLoaded = true;
     },
     CHANGE_TARGET_LANG: (state, newTargetLang) => {
       state.selectedTargetLang = newTargetLang;

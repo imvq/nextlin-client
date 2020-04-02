@@ -2,7 +2,7 @@
   <div
     class="circle"
   >
-    {{ successIndex }}
+    {{ result }}
   </div>
 </template>
 
@@ -22,16 +22,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  transition: opacity 5s ease-out;
 }
 </style>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   props: {
     successIndex: {
       type: Number,
       required: true
     }
+  },
+
+  computed: {
+    ...mapState([
+      'result'
+    ])
   }
-};
+};  
 </script>

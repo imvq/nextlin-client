@@ -29,7 +29,10 @@
         >
           Analyze
         </b-button>
-        <TextInCircle :success-index="33" />
+        <TextInCircle
+          v-if="resultLoaded"
+          :success-index="33"
+        />
       </div>
     </div>
   </section>
@@ -49,7 +52,7 @@
 import LangSelector from '@/components/LangSelector';
 import ControlButtonGroup from '@/components/ControlButtonGroup';
 import TextInCircle from '@/components/TextInCircle';
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 import { apiPath } from '@/constants';
 
 export default {
@@ -65,9 +68,13 @@ export default {
       'selectedLangLevelPairs',
       'selectedTargetLang',
       'selectedNativeLang',
+      'resultLoaded'
     ]),
     ...mapGetters([
       'preparedLangsInfos'
+    ]),
+    ...mapMutations([
+      'SET_RESULT_LOADED'
     ])
   },
 
@@ -79,7 +86,7 @@ export default {
         'known_langs': this.preparedLangsInfos
       })
       .then(response => {
-        alert(JSON.stringify(response));
+        this.SET_RESULT_LOADED(response['data']['success_index']);
       });
     }
   }

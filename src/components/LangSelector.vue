@@ -57,7 +57,7 @@ select {
 </style>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
   props: {
@@ -76,6 +76,12 @@ export default {
     }
   },
 
+  data() {
+    return {
+      dummyOptionToSelect: ''
+    };
+  },
+
   computed: {
     ...mapState([
       'levels',
@@ -84,19 +90,20 @@ export default {
       'selectedTargetLang',
       'selectedNativeLang'
     ]),
-
-    optionToSelect() {
-      return this.target
-        ? this.selectedTargetLang
-        : this.selectedNativeLang;
-    },
+    ...mapGetters([
+      'defaultLang'
+    ]),
 
     selectedOption: {
       get() {
-        return this.optionToSelect;
+        return this.target
+          ? this.selectedTargetLang
+          : this.native
+          ? this.selectedNativeLang
+          : this.defaultLang;
       },
       set(value) {
-        this.optionToSelect = value;
+        this.dummyOptionToSelect = value;
       }
     },
 

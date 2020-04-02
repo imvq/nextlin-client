@@ -4,6 +4,8 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const levels = ['Novice', 'Middle', 'Strong', 'Master'];
+const DEFAULT_TARGET_LANG_INDEX = 2;
+const DEFAULT_NATIVE_LANG_INDEX = 13;
 
 export default new Vuex.Store({
   state: {
@@ -33,6 +35,23 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    SET_AVAILABLE_LANGS: (state, langs) => {
+      langs.forEach(langName => {
+        state.availableLangs.push(langName);
+      });
+      state.selectedNativeLang = state.availableLangs
+          .length > DEFAULT_TARGET_LANG_INDEX
+        ? state.availableLangs[DEFAULT_TARGET_LANG_INDEX]
+        : state.availableLangs.length > 0
+        ? state.availableLangs[0]
+        : '';
+        state.selectedNativeLang = state.availableLangs
+          .length > DEFAULT_NATIVE_LANG_INDEX
+        ? state.availableLangs[DEFAULT_NATIVE_LANG_INDEX]
+        : state.availableLangs.length > 0
+        ? state.availableLangs[0]
+        : '';
+    },
     SET_LANGS_AS_LOADED: state => {
       state.langsLoaded = true;
     },

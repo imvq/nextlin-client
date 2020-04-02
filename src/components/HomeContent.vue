@@ -48,15 +48,18 @@ export default {
 
   methods: {
     ...mapMutations([
+      'SET_AVAILABLE_LANGS',
       'SET_LANGS_AS_LOADED'
     ]),
     
     setLangs() {
       this.axios.get(`${apiPath}/langs/available`)
       .then(response => {
+        const availableLangs = [];
         response['data']['results'].forEach(langName => {
-          this.availableLangs.push(langName);
+          availableLangs.push(langName);
         });
+        this.SET_LANGS_AS_LOADED(availableLangs);
       });
     }
   }

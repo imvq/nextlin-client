@@ -87,6 +87,9 @@ export default {
       })
       .then(response => {
         this.SET_RESULT_LOADED(response['data']['success_index']);
+      })
+      .catch(error => {
+        alert('The service server does not response');
       });
     }
   }

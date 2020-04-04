@@ -4,8 +4,13 @@
       <h3>Learn your success index</h3>
       <p>
         Choose your native language and languages you know.
-        Also choose your knowleadge levels. If you don't know your
+        Also choose your level for each language you know. If you don't know your
         exact level, choose 'Middle'.
+        If you choose multiple identical languages, the one with the highest level will be chosen
+        (ignoring any other choices).
+        There must be at least one native language.
+        The service does not take into account social aspects that can affect the complexity of learning a particular language,
+        as well as other aspects that are not directly related to the linguistic characteristics of chosen languages.
       </p>
       <div class="text-center">
         <LangSelector

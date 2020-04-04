@@ -11,6 +11,7 @@
         There must be at least one native language.
         The service does not take into account social aspects that can affect the complexity of learning a particular language,
         as well as other aspects that are not directly related to the linguistic characteristics of chosen languages.
+        You will see the success rate of learning your chosen language, expressed as a percentage.
       </p>
       <div class="text-center">
         <LangSelector
@@ -39,6 +40,11 @@
             v-if="resultLoaded"
           />
         </transition>
+        <br>
+        <br>
+        <p>
+          Note that the numbers obtained are not formally confirmed data, and are a theoretical estimate of this experimental system.
+        </p>
       </div>
     </div>
   </section>

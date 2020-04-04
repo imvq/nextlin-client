@@ -10,12 +10,6 @@
           <i class="material-icons">home</i>
         </div>
       </router-link>
-      <router-link
-        to="/"
-        class="navbar-brand"
-      >
-        About
-      </router-link>
     </div>
   </nav>
 </template>

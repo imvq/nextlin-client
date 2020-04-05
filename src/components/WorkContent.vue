@@ -1,5 +1,8 @@
 <template>
-  <section class="py-5">
+  <section
+    id="work-content"
+    class="py-5"
+  >
     <div class="container">
       <h3>Learn your success index</h3>
       <p>
@@ -51,6 +54,10 @@
 </template>
 
 <style scoped>
+#work-content {
+  min-height: calc(100vh - 48px - 296px - 12px);
+}
+
 .wrapper-cenetered {
   text-align: center;
 }

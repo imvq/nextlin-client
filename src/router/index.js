@@ -11,12 +11,18 @@ export default new VueRouter({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      meta: {
+        title: 'Nextlin | Home'
+      }
     },
     {
       path: '/work',
       name: 'Work',
-      component: () => import('../views/Work.vue')
+      component: () => import('../views/Work.vue'),
+      meta: {
+        title: 'Nextlin | Analyse'
+      }
     },
   ]
 });

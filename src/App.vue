@@ -38,6 +38,6 @@ export default {
     Navbar,
     Header,
     Footer
-  }
+  },
 };
 </script>

@@ -24,10 +24,9 @@
           native
         />
         <LangSelector
-          v-for="(choice, index) in selectedLangLevelPairs"
-          :key="index"
+          v-for="choice in selectedLangLevelPairs"
+          :key="choice.uid"
           :value="choice.lang"
-          :elem-id="index"
         />
         <ControlButtonGroup />
         <b-button

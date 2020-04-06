@@ -76,16 +76,10 @@ export default new Vuex.Store({
     ADD_LANG_LEVEL_PAIR: (state, pair) => {
       state.selectedLangLevelPairs.push(pair);
     },
-    REM_LANG_LEVEL_PAIR: state => {
-      state.selectedLangLevelPairs.pop();
-    },
-    INC_CURRENT_PAIR_ID: state => {
-      ++state.selectedLangLevelId;
-    },
-    DEC_CURRENT_PAIR_ID: state => {
-      if (state.selectedLangLevelId) {
-        --state.selectedLangLevelId;
-      }
+    REM_LANG_LEVEL_PAIR: (state, { index }) => {
+      state.selectedLangLevelPairs.splice(index, 1);
+      // alert(index);
+      alert(JSON.stringify(state.selectedLangLevelPairs));
     }
   }
 });

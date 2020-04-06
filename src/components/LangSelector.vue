@@ -40,6 +40,14 @@
     >
       <option>Native</option>
     </select>
+
+    <b-button
+      v-if="!native && !target"
+      variant="primary"
+      @click="onRemoving()"
+    >
+      —
+    </b-button>
   </div>
 </template>
 
@@ -49,6 +57,12 @@ select {
   height: 40px;
   margin: 10px;
   text-align-last:center;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  margin: 10px;
 }
 
 .nowrap {
@@ -61,11 +75,6 @@ import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
   props: {
-    elemId: {
-      type: Number,
-      required: false,
-      default: 0
-    },
     target: {
       type: Boolean,
       required: false
@@ -78,7 +87,8 @@ export default {
 
   data() {
     return {
-      dummyOptionToSelect: ''
+      dummyOptionToSelect: '',
+      elemId: 0
     };
   },
 
@@ -114,11 +124,16 @@ export default {
     }
   },
 
+  created() {
+    this.elemId = this.selectedLangLevelPairs.length - 1;
+  },
+
   methods: {
     ...mapMutations([
       'CHANGE_TARGET_LANG',
       'CHANGE_NATIVE_LANG',
-      'CHANGE_LANG_LEVEL_PAIR'
+      'CHANGE_LANG_LEVEL_PAIR',
+      'REM_LANG_LEVEL_PAIR'
     ]),
 
     onTargetLangChanged(event) {
@@ -140,6 +155,12 @@ export default {
       this.CHANGE_LANG_LEVEL_PAIR({
         index: this.elemId,
         level: event.target.value
+      });
+    },
+
+    onRemoving() {
+      this.REM_LANG_LEVEL_PAIR({
+        index: this.elemId
       });
     }
   }

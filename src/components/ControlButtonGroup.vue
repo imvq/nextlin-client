@@ -7,12 +7,12 @@
     >
       ＋
     </b-button>
-    <b-button
+    <!-- <b-button
       variant="primary"
       @click="onRemoving()"
     >
       —
-    </b-button>
+    </b-button> -->
   </div>
 </template>
 
@@ -32,8 +32,7 @@ export default {
     ...mapState([
       'levels',
       'availableLangs',
-      'currentChoices',
-      'selectedLangLevelId'
+      'currentChoices'
     ]),
     ...mapGetters([
       'defaultLevel',
@@ -43,24 +42,15 @@ export default {
 
   methods: {
     ...mapMutations([
-      'ADD_LANG_LEVEL_PAIR',
-      'REM_LANG_LEVEL_PAIR',
-      'INC_CURRENT_PAIR_ID',
-      'DEC_CURRENT_PAIR_ID'
+      'ADD_LANG_LEVEL_PAIR'
     ]),
 
     onAdding() {
       this.ADD_LANG_LEVEL_PAIR({
-        id: this.selectedLangLevelId,
+        uid: this._uid,
         lang: this.defaultLang,
         level: this.defaultLevel
       });
-      this.INC_CURRENT_PAIR_ID();
-    },
-
-    onRemoving() {
-      this.REM_LANG_LEVEL_PAIR();
-      this.DEC_CURRENT_PAIR_ID();
     }
   }
 };

@@ -5,5 +5,8 @@ export function generateUUID(alreadyExisting) {
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
     );
   } while (alreadyExisting.includes(generatedUUID));
+
+  alreadyExisting.push(generatedUUID);
+
   return generatedUUID;
 }

@@ -25,7 +25,7 @@
         />
         <LangSelector
           v-for="choice in selectedLangLevelPairs"
-          :key="choice.uid"
+          :key="choice.uuid"
           :value="choice.lang"
         />
         <ControlButtonGroup />

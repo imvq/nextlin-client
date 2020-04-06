@@ -7,6 +7,24 @@ const levels = ['Novice', 'Middle', 'Strong', 'Master', 'Native'];
 const DEFAULT_TARGET_LANG_INDEX = 2;
 const DEFAULT_NATIVE_LANG_INDEX = 13;
 
+function changeLang(state, elemUUID, lang) {
+  const target = state.selectedLangLevelPairs.find(
+    elem => elem.uuid === elemUUID
+  );
+  if (target) {
+    target.lang = lang;
+  }
+}
+
+function changeLevel(state, elemUUID, level) {
+  const target = state.selectedLangLevelPairs.find(
+    elem => elem.uuid === elemUUID
+  );
+  if (target) {
+    target.level = level;
+  }
+}
+
 export default new Vuex.Store({
   state: {
     uuids: [],
@@ -53,34 +71,47 @@ export default new Vuex.Store({
         ? state.availableLangs[0]
         : '';
     },
+
     SET_LANGS_AS_LOADED: state => {
       state.langsLoaded = true;
     },
+
     SET_RESULT_AS_LOADED: (state, result) => {
       state.result = result;
       state.resultLoaded = true;
     },
+
     CHANGE_TARGET_LANG: (state, newTargetLang) => {
       state.selectedTargetLang = newTargetLang;
     },
+
     CHANGE_NATIVE_LANG: (state, newNativeLang) => {
       state.selectedNativeLang = newNativeLang;
     },
-    CHANGE_LANG_LEVEL_PAIR: (state, { index, lang, level }) => {
+
+    CHANGE_LANG_LEVEL_PAIR: (state, { elemUUID, lang, level }) => {
       if (lang) {
-        state.selectedLangLevelPairs[index].lang = lang;
+        changeLang(state, elemUUID, lang);
       }
+
       if (level) {
-        state.selectedLangLevelPairs[index].level = level;
+        changeLevel(state, elemUUID, level);
       }
     },
+
     ADD_LANG_LEVEL_PAIR: (state, pair) => {
       state.selectedLangLevelPairs.push(pair);
     },
-    REM_LANG_LEVEL_PAIR: (state, { index }) => {
-      state.selectedLangLevelPairs.splice(index, 1);
-      // alert(index);
-      alert(JSON.stringify(state.selectedLangLevelPairs));
+
+    REM_LANG_LEVEL_PAIR: (state, { elemUUID }) => {
+      const target = state.selectedLangLevelPairs.find(
+        elem => elem.uuid === elemUUID
+      );
+      if (target) {
+        state.selectedLangLevelPairs.splice(
+          state.selectedLangLevelPairs.indexOf(target), 1
+        );
+      }
     }
   }
 });

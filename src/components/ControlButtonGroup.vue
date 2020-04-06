@@ -49,7 +49,7 @@ export default {
 
     onAdding() {
       this.ADD_LANG_LEVEL_PAIR({
-        uid: generateUUID(this.uuids),
+        uuid: generateUUID(this.uuids),
         lang: this.defaultLang,
         level: this.defaultLevel
       });

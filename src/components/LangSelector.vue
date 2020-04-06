@@ -88,7 +88,7 @@ export default {
   data() {
     return {
       dummyOptionToSelect: '',
-      elemId: 0
+      elemUUID: 0
     };
   },
 
@@ -125,7 +125,10 @@ export default {
   },
 
   created() {
-    this.elemId = this.selectedLangLevelPairs.length - 1;
+    const lastIndex = this.selectedLangLevelPairs.length - 1;
+    this.elemUUID = this.selectedLangLevelPairs[lastIndex]
+      ? this.selectedLangLevelPairs[lastIndex].uuid
+      : 0;
   },
 
   methods: {
@@ -146,21 +149,21 @@ export default {
 
     onLangChanged(event) {
       this.CHANGE_LANG_LEVEL_PAIR({
-        index: this.elemId,
+        elemUUID: this.elemUUID,
         lang: event.target.value
       });
     },
 
     onLevelChanged(event) {
       this.CHANGE_LANG_LEVEL_PAIR({
-        index: this.elemId,
+        elemUUID: this.elemUUID,
         level: event.target.value
       });
     },
 
     onRemoving() {
       this.REM_LANG_LEVEL_PAIR({
-        index: this.elemId
+        elemUUID: this.elemUUID
       });
     }
   }

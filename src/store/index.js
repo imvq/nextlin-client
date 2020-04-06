@@ -9,6 +9,7 @@ const DEFAULT_NATIVE_LANG_INDEX = 13;
 
 export default new Vuex.Store({
   state: {
+    uuids: [],
     levels,
     availableLangs: [],
     selectedTargetLang: '',

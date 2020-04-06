@@ -4,7 +4,7 @@
     class="py-5"
   >
     <div class="container">
-      <h3>Learn your success index</h3>
+      <h3>Let's find out similarity index for your language</h3>
       <p>
         Choose your native language and languages you know.
         Also choose your level for each language you know. If you don't

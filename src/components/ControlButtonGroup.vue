@@ -26,10 +26,12 @@ button {
 
 <script>
 import { mapState, mapGetters, mapMutations } from 'vuex';
+import { generateUUID } from '@/helpers';
 
 export default {
   computed: {
     ...mapState([
+      'uuids',
       'levels',
       'availableLangs',
       'currentChoices'
@@ -47,7 +49,7 @@ export default {
 
     onAdding() {
       this.ADD_LANG_LEVEL_PAIR({
-        uid: this._uid,
+        uid: generateUUID(this.uuids),
         lang: this.defaultLang,
         level: this.defaultLevel
       });

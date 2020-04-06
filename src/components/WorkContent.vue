@@ -7,14 +7,25 @@
       <h3>Learn your success index</h3>
       <p>
         Choose your native language and languages you know.
-        Also choose your level for each language you know. If you don't know your
-        exact level, choose 'Middle'.
-        If you choose multiple identical languages, the one with the highest level will be chosen
+        Also choose your level for each language you know. If you don't
+        know your exact level, choose 'Middle'.
+        <br>If you choose <strong>multiple</strong> identical languages,
+        the one with the <strong>highest</strong> level will be chosen
         (ignoring any other choices).
-        There must be at least one native language.
-        The service does not take into account social aspects that can affect the complexity of learning a particular language,
-        as well as other aspects that are not directly related to the linguistic characteristics of chosen languages.
-        You will see the success rate of learning your chosen language, expressed as a percentage.
+        <br>There must be <strong>at least one native</strong> language.
+        <br>
+        <br>The service computes <strong>similarity</strong> (percentage value)
+        between the <strong>target</strong> language and
+        <strong>each language you select as known</strong>,
+        giving you the best optimistic similarity value.
+        <br>While analysing, the service
+        <strong>only cares about linguistic characteristics</strong> of the
+        comparing languages.
+        <br>Please, note, that the service does not take into account
+        social, psychological or individual aspects that can affect the
+        complexity of learning a particular language,
+        as well as other aspects that are not directly
+        related to the linguistic characteristics of chosen languages.
       </p>
       <div class="text-center">
         <LangSelector

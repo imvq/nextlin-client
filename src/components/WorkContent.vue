@@ -90,6 +90,7 @@ import ControlButtonGroup from '@/components/ControlButtonGroup';
 import TextInCircle from '@/components/TextInCircle';
 import { mapState, mapGetters, mapMutations } from 'vuex';
 import { apiPath } from '@/constants';
+import loaderMixin from '@/mixins/loaderMixin';
 
 export default {
   components: {
@@ -97,6 +98,8 @@ export default {
     ControlButtonGroup,
     TextInCircle
   },
+
+  mixins: [loaderMixin],
 
   computed: {
     ...mapState([

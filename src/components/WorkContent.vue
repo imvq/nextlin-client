@@ -40,6 +40,9 @@
           :value="choice.lang"
         />
         <ControlButtonGroup />
+        <p v-if="isANativeLangSelected">
+          *at least one native language is required
+        </p>
         <b-button
           class="btn-lg"
           pill
@@ -110,7 +113,8 @@ export default {
       'resultLoaded'
     ]),
     ...mapGetters([
-      'preparedLangsInfos'
+      'preparedLangsInfos',
+      'isANativeLangSelected'
     ])
   },
 

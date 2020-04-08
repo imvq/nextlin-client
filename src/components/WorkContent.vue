@@ -47,6 +47,7 @@
           class="btn-lg"
           pill
           variant="primary"
+          :disabled="!isANativeLangSelected"
           @click="analyse"
         >
           Analyze

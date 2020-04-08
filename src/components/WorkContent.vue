@@ -32,9 +32,6 @@
           target
         />
         <LangSelector
-          native
-        />
-        <LangSelector
           v-for="choice in selectedLangLevelPairs"
           :key="choice.uuid"
           :value="choice.lang"

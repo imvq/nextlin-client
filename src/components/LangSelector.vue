@@ -1,11 +1,11 @@
 <template>
   <div>
     <div
-      v-if="target || native"
+      v-if="target"
       class="nowrap"
     >
       <span>
-        {{ selectionDescription }}:
+        Target language:
       </span>
     </div>
 
@@ -22,7 +22,7 @@
     </select>
 
     <select
-      v-if="!native && !target"
+      v-if="!target"
       @change="onLevelChanged"
     >
       <option
@@ -35,7 +35,7 @@
     </select>
 
     <b-button
-      v-if="!native && !target"
+      v-if="!target"
       variant="primary"
       @click="onRemoving()"
     >
@@ -71,20 +71,11 @@ export default {
     target: {
       type: Boolean,
       required: false
-    },
-    native: {
-      type: Boolean,
-      required: false
     }
   },
 
   data() {
     return {
-      selectionDescription: this.target
-        ? 'Target lang'
-        : this.native
-        ? 'Native lang'
-        : '',
       dummyOptionToSelect: '',
       elemUUID: 0
     };
@@ -95,8 +86,7 @@ export default {
       'levels',
       'availableLangs',
       'selectedLangLevelPairs',
-      'selectedTargetLang',
-      'selectedNativeLang'
+      'selectedTargetLang'
     ]),
     ...mapGetters([
       'defaultLang'
@@ -106,8 +96,6 @@ export default {
       get() {
         return this.target
           ? this.selectedTargetLang
-          : this.native
-          ? this.selectedNativeLang
           : this.defaultLang;
       },
       set(value) {
@@ -116,8 +104,8 @@ export default {
     },
 
     changerFunction() {
-      return this.target ? this.onTargetLangChanged
-        : this.native ? this.onNativeLangChanged
+      return this.target
+        ? this.onTargetLangChanged
         : this.onLangChanged;
     }
   },
@@ -132,17 +120,12 @@ export default {
   methods: {
     ...mapMutations([
       'CHANGE_TARGET_LANG',
-      'CHANGE_NATIVE_LANG',
       'CHANGE_LANG_LEVEL_PAIR',
       'REM_LANG_LEVEL_PAIR'
     ]),
 
     onTargetLangChanged(event) {
       this.CHANGE_TARGET_LANG(event.target.value);
-    },
-
-    onNativeLangChanged(event) {
-      this.CHANGE_NATIVE_LANG(event.target.value);
     },
 
     onLangChanged(event) {

@@ -11,7 +11,7 @@
   align-content: center;
   align-self: center;
   text-align: center;
-  font-size: 10vh;
+  font-size: 5em;
   width: 200px;
   height: 200px;
   margin: auto;

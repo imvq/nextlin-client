@@ -40,11 +40,11 @@ export default new Vuex.Store({
   },
 
   getters: {
-    defaultLevel: store => store.levels[0] || '',
-    defaultLang: store => store.availableLangs[0] || '',
-    preparedLangsInfos: store => {
+    defaultLevel: state => state.levels[0] || '',
+    defaultLang: state => state.availableLangs[0] || '',
+    preparedLangsInfos: state => {
       const preparedData = [];
-      store.selectedLangLevelPairs.forEach(value => {
+      state.selectedLangLevelPairs.forEach(value => {
         preparedData.push({
           [value.lang]: value.level
         });

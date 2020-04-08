@@ -36,10 +36,12 @@
 
     <b-button
       v-if="!target"
-      variant="primary"
+      variant="warning"
       @click="onRemoving()"
     >
-      —
+      <div class="white-image">
+        <span class="mdi mdi-trash-can" />
+      </div>
     </b-button>
   </div>
 </template>
@@ -53,12 +55,14 @@ select {
 }
 
 button {
-  width: 100px;
+  width: 50px;
   height: 40px;
   margin: 10px;
 }
 
 .nowrap {
+  width: 140px;
+  margin-right: 50px;
   display: inline-block;
 }
 </style>

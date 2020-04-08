@@ -50,9 +50,11 @@ export default new Vuex.Store({
       });
       return preparedData;
     },
-    isANativeLangSelected: (_, getters) => getters.preparedLangsInfos
+    isANativeLangSelected: (_, getters) => Boolean(
+      getters.preparedLangsInfos
       .filter(langLevelPair => langLevelPair.level === 'Native')
       .length
+    )
   },
 
   mutations: {

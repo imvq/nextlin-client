@@ -37,7 +37,7 @@
           :value="choice.lang"
         />
         <ControlButtonGroup />
-        <p v-if="isANativeLangSelected">
+        <p v-if="!isANativeLangSelected">
           *at least one native language is required
         </p>
         <b-button
@@ -106,7 +106,6 @@ export default {
       'availableLangs',
       'selectedLangLevelPairs',
       'selectedTargetLang',
-      'selectedNativeLang',
       'resultLoaded'
     ]),
     ...mapGetters([
@@ -124,9 +123,6 @@ export default {
       this.axios.post(`${apiPath}/langs/analyse`, {
         'target_lang': this.selectedTargetLang,
         'known_langs': this.preparedLangsInfos
-          .concat([
-            { [this.selectedNativeLang]: 'Native' }
-          ])
       })
       .then(response => {
         this.SET_RESULT_AS_LOADED(response['data']['success_index']);

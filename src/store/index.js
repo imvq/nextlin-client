@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const levels = ['Novice', 'Middle', 'Strong', 'Master', 'Native'];
-const DEFAULT_TARGET_LANG_INDEX = 2;
+const DEFAULT_TARGET_LANG_INDEX = 4;
 
 function changeLang(state, elemUUID, lang) {
   const target = state.selectedLangLevelPairs.find(

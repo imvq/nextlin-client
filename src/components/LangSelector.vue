@@ -1,11 +1,11 @@
 <template>
   <div>
     <div
-      v-if="target"
+      v-if="target || native"
       class="nowrap"
     >
       <span>
-        Target language:
+        {{ selectionDescription }}:
       </span>
     </div>
 
@@ -32,13 +32,6 @@
       >
         {{ level }}
       </option>
-    </select>
-
-    <select
-      v-if="native"
-      disabled
-    >
-      <option>Native</option>
     </select>
 
     <b-button
@@ -87,6 +80,11 @@ export default {
 
   data() {
     return {
+      selectionDescription: this.target
+        ? 'Target lang'
+        : this.native
+        ? 'Native lang'
+        : '',
       dummyOptionToSelect: '',
       elemUUID: 0
     };

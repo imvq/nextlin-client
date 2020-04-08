@@ -23,8 +23,6 @@
 </template>
 
 <style scoped>
-@import url("https://cdn.materialdesignicons.com/5.0.45/css/materialdesignicons.min.css");
-
 #link-home, #link-author {
   color: white;
   font-size: 24px;

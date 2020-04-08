@@ -12,6 +12,10 @@
   </div>
 </template>
 
+<style lang="scss">
+@import url("https://cdn.materialdesignicons.com/5.0.45/css/materialdesignicons.min.css");
+</style>
+
 <style lang="scss" scoped>
 #app {
   overflow-x: hidden;

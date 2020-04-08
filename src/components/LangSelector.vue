@@ -125,14 +125,17 @@ export default {
     ...mapMutations([
       'CHANGE_TARGET_LANG',
       'CHANGE_LANG_LEVEL_PAIR',
-      'REM_LANG_LEVEL_PAIR'
+      'REM_LANG_LEVEL_PAIR',
+      'SET_RESULT_UNLOADED'
     ]),
 
     onTargetLangChanged(event) {
+      this.SET_RESULT_UNLOADED();
       this.CHANGE_TARGET_LANG(event.target.value);
     },
 
     onLangChanged(event) {
+      this.SET_RESULT_UNLOADED();
       this.CHANGE_LANG_LEVEL_PAIR({
         elemUUID: this.elemUUID,
         lang: event.target.value
@@ -140,6 +143,7 @@ export default {
     },
 
     onLevelChanged(event) {
+      this.SET_RESULT_UNLOADED();
       this.CHANGE_LANG_LEVEL_PAIR({
         elemUUID: this.elemUUID,
         level: event.target.value
@@ -147,6 +151,7 @@ export default {
     },
 
     onRemoving() {
+      this.SET_RESULT_UNLOADED();
       this.REM_LANG_LEVEL_PAIR({
         elemUUID: this.elemUUID
       });

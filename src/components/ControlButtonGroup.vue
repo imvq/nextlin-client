@@ -44,10 +44,12 @@ export default {
 
   methods: {
     ...mapMutations([
-      'ADD_LANG_LEVEL_PAIR'
+      'ADD_LANG_LEVEL_PAIR',
+      'SET_RESULT_UNLOADED'
     ]),
 
     onAdding() {
+      this.SET_RESULT_UNLOADED();
       this.ADD_LANG_LEVEL_PAIR({
         uuid: generateUUID(this.uuids),
         lang: this.defaultLang,

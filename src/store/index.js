@@ -89,6 +89,11 @@ export default new Vuex.Store({
       state.resultLoaded = true;
     },
 
+    SET_RESULT_UNLOADED: state => {
+      state.result = '0%';
+      state.resultLoaded = false;
+    },
+
     CHANGE_TARGET_LANG: (state, newTargetLang) => {
       state.selectedTargetLang = newTargetLang;
     },

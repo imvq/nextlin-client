@@ -5,7 +5,6 @@ Vue.use(Vuex);
 
 const levels = ['Novice', 'Middle', 'Strong', 'Master', 'Native'];
 const DEFAULT_TARGET_LANG_INDEX = 2;
-const DEFAULT_NATIVE_LANG_INDEX = 13;
 
 function changeLang(state, elemUUID, lang) {
   const target = state.selectedLangLevelPairs.find(
@@ -68,12 +67,6 @@ export default new Vuex.Store({
       state.selectedTargetLang = state.availableLangs
           .length > DEFAULT_TARGET_LANG_INDEX
         ? state.availableLangs[DEFAULT_TARGET_LANG_INDEX]
-        : state.availableLangs.length > 0
-        ? state.availableLangs[0]
-        : '';
-      state.selectedNativeLang = state.availableLangs
-          .length > DEFAULT_NATIVE_LANG_INDEX
-        ? state.availableLangs[DEFAULT_NATIVE_LANG_INDEX]
         : state.availableLangs.length > 0
         ? state.availableLangs[0]
         : '';

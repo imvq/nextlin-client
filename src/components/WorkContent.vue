@@ -39,9 +39,16 @@
         <ControlButtonGroup />
         <p
           v-if="!isANativeLangSelected"
-          id="requirements-label"
+          class="warn-label"
         >
           *at least one native language is required
+        </p>
+        <p
+          v-if="!noDuplicatesPresent"
+          class="warn-label"
+        >
+          *duplicates present; a language with the highest priority will
+          be chosen, the others will be ignored
         </p>
         <b-button
           class="btn-lg"
@@ -72,7 +79,7 @@
   min-height: calc(100vh - 48px - 296px - 12px);
 }
 
-#requirements-label {
+.warn-label {
   color: red;
 }
 
@@ -119,7 +126,8 @@ export default {
     ]),
     ...mapGetters([
       'preparedLangsInfos',
-      'isANativeLangSelected'
+      'isANativeLangSelected',
+      'noDuplicatesPresent'
     ])
   },
 

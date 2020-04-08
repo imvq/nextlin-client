@@ -56,7 +56,15 @@ export default new Vuex.Store({
         getters.preparedLangsInfos
         .filter(lang => Object.values(lang).includes('Native'))
         .length
-      )
+      ),
+
+    noDuplicatesPresent: state => {
+      const langsNames = [];
+      state.selectedLangLevelPairs.forEach(value => {
+        langsNames.push(value.lang);
+      });
+      return (new Set(langsNames)).size === langsNames.length;
+    }
   },
 
   mutations: {

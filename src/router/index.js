@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
@@ -8,9 +7,17 @@ export default new VueRouter({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '/404',
+      component: () => import('../views/NotFound.vue')
+    },
+    {
+      path: '*',
+      redirect: '/404'
+    },
+    {
       path: '/',
       name: 'Home',
-      component: Home,
+      component: () => import('../views/Home.vue'),
       meta: {
         title: 'Nextlin | Home'
       }

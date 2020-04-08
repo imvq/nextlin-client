@@ -37,7 +37,10 @@
           :value="choice.lang"
         />
         <ControlButtonGroup />
-        <p v-if="!isANativeLangSelected">
+        <p
+          v-if="!isANativeLangSelected"
+          id="requirements-label"
+        >
           *at least one native language is required
         </p>
         <b-button
@@ -68,6 +71,10 @@
   min-height: calc(100vh - 48px - 296px - 12px);
 }
 
+#requirements-label {
+  color: red;
+}
+
 .wrapper-cenetered {
   text-align: center;
 }
@@ -79,6 +86,7 @@
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
+
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }

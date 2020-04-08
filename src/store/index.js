@@ -40,7 +40,9 @@ export default new Vuex.Store({
 
   getters: {
     defaultLevel: state => state.levels[0] || '',
+
     defaultLang: state => state.availableLangs[0] || '',
+
     preparedLangsInfos: state => {
       const preparedData = [];
       state.selectedLangLevelPairs.forEach(value => {
@@ -50,11 +52,12 @@ export default new Vuex.Store({
       });
       return preparedData;
     },
+
     isANativeLangSelected: (_, getters) => Boolean(
-      getters.preparedLangsInfos
-      .filter(langLevelPair => langLevelPair.level === 'Native')
-      .length
-    )
+        getters.preparedLangsInfos
+        .filter(lang => Object.values(lang).includes('Native'))
+        .length
+      )
   },
 
   mutations: {

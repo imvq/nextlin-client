@@ -51,6 +51,7 @@
           be chosen, the others will be ignored
         </p>
         <b-button
+          id="button-analyse"
           class="btn-lg"
           pill
           variant="primary"

@@ -7,12 +7,6 @@
     >
       ＋
     </b-button>
-    <!-- <b-button
-      variant="primary"
-      @click="onRemoving()"
-    >
-      —
-    </b-button> -->
   </div>
 </template>
 

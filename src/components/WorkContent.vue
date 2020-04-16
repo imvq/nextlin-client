@@ -39,12 +39,14 @@
         <ControlButtonGroup />
         <p
           v-if="!isANativeLangSelected"
+          id="warn-native-lang"
           class="warn-label"
         >
           *at least one native language is required
         </p>
         <p
           v-if="!noDuplicatesPresent"
+          id="warn-duplicates"
           class="warn-label"
         >
           *duplicates present; a language with the highest priority will

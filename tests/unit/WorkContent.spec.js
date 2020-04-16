@@ -19,4 +19,9 @@ describe('ControlButtonGroup.vue', () => {
     const analyseButton = wrapper.find('#button-analyse');
     expect(analyseButton.attributes().disabled).toBe('true');
   });
+
+  it('No-native-lang-warning visible at start', () => {
+    const labelNativeLangWarn = wrapper.find('#warn-native-lang');
+    expect(labelNativeLangWarn).not.toBeUndefined;
+  });
 });

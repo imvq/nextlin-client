@@ -14,6 +14,10 @@ describe('ControlButtonGroup.vue', () => {
     localVue
   });
 
+  it('Is a Vue instance', () => {
+    expect(wrapper.isVueInstance()).toBeTruthy();
+  });
+
   it('Is disabled by default', () => {
     const addingButton = wrapper.find('#button-adding');
     expect(addingButton.attributes().disabled).toBe('disabled');

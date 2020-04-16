@@ -14,6 +14,10 @@ describe('LangSelector.vue', () => {
     localVue
   });
 
+  it('Is a Vue instance', () => {
+    expect(wrapper.isVueInstance()).toBeTruthy();
+  });
+
   it('Levels are present', () => {
     const levels = store.state.levels;
     expect(levels).not.toBeUndefined;

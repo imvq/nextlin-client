@@ -17,6 +17,10 @@ describe('ControlButtonGroup.vue', () => {
     localVue
   });
 
+  it('Is a Vue instance', () => {
+    expect(wrapper.isVueInstance()).toBeTruthy();
+  });
+
   it('The "analyse" button Is disabled by default', () => {
     const analyseButton = wrapper.find('#button-analyse');
     expect(analyseButton.attributes().disabled).toBe('disabled');

@@ -13,7 +13,6 @@ describe('ControlButtonGroup.vue', () => {
   });
 
   it('Is disabled by default', () => {
-    console.log(wrapper.html());
     expect(
       wrapper
       .find('#button-adding')

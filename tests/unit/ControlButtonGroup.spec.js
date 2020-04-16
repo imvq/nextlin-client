@@ -13,11 +13,7 @@ describe('ControlButtonGroup.vue', () => {
   });
 
   it('Is disabled by default', () => {
-    expect(
-      wrapper
-      .find('#button-adding')
-      .attributes()
-      .disabled
-    ).toBe('true');
+    const addingButton = wrapper.find('#button-adding');
+    expect(addingButton.attributes().disabled).toBe('true');
   });
 });

@@ -22,8 +22,13 @@ describe('ControlButtonGroup.vue', () => {
     expect(analyseButton.attributes().disabled).toBe('disabled');
   });
 
-  it('No-native-lang-warning visible at start', () => {
+  it('No-native-lang warning visible at start', () => {
     const labelNativeLangWarn = wrapper.find('#warn-native-lang');
     expect(labelNativeLangWarn).not.toBeUndefined;
+  });
+
+  it('Duplicates warning not visible at start', () => {
+    const labelNativeLangWarn = wrapper.find('#warn-duplicates');
+    expect(labelNativeLangWarn).toBeUndefined;
   });
 });

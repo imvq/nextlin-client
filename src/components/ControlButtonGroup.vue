@@ -1,6 +1,7 @@
 <template>
   <div>
     <b-button
+      id="button-adding"
       variant="primary"
       :disabled.sync="availableLangs.length === 0"
       @click="onAdding()"
